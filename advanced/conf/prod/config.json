@@ -1,0 +1,13 @@
+{
+  "server": {
+    "name": "我的应用",
+    "port": 9999,
+    "contextPath": "/"
+  },
+  "db": {
+    "address": "192.168.1.10:3306",
+    "username": "myapp",
+    "password": "myapp123",
+    "dbName": "myapp"
+  }
+}
