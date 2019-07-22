@@ -21,8 +21,10 @@ func main() {
 	db, e := sql.Open("mysql", mysql)
 	defer db.Close()
 	checkError(e)
-	insert(db)
-	update(db)
+	//insert(db)
+	//update(db)
+	delete(db)
+	//query(db)
 }
 
 func insert(db *sql.DB) (affectRow int64) {
@@ -43,6 +45,27 @@ func update(db *sql.DB) (affectRow int64) {
 	checkError(e)
 	affectRow, _ = result.RowsAffected()
 	return
+}
+
+func delete(db *sql.DB) (affectRow int64) {
+	stmt, e := db.Prepare("delete from userinfo where uid=?")
+	checkError(e)
+	result, e := stmt.Exec(1)
+	checkError(e)
+	affectRow, _ = result.RowsAffected()
+	return
+}
+
+func query(db *sql.DB) {
+	rows, e := db.Query("select uid, username from userinfo")
+	checkError(e)
+	for rows.Next()  {
+		var uid int
+		var username string
+		rows.Scan(&uid, &username)
+		fmt.Printf("uid=%d, username=%s\n", uid, username)
+	}
+
 }
 
 func checkError(e error) {
