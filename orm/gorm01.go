@@ -4,20 +4,22 @@ import (
 	"fmt"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
+	"java-2-go-examples/orm/mysql"
 	"time"
 )
 
-var db *gorm.DB
-
-func init()  {
-	mysql := fmt.Sprintf("%s:%s@%s(%s:%d)/%s", "root", "root", "tcp", "127.0.0.1", 3306, "go-examples")
-	db, _ = gorm.Open("mysql", mysql)
-	db.LogMode(true)
-	//defer db.Close()
-}
+//var db *gorm.DB
+//
+//func init()  {
+//	mysql := fmt.Sprintf("%s:%s@%s(%s:%d)/%s", "root", "root", "tcp", "127.0.0.1", 3306, "go-examples")
+//	db, _ = gorm.Open("mysql", mysql)
+//	db.LogMode(true)
+//	//defer db.Close()
+//}
 
 
 func main() {
+	db := mysql.GetConn()
 	db.AutoMigrate(&Product{})
 	//db.CreateTable(&Product{})
 	// 创建
