@@ -14,6 +14,16 @@ func (Student) TableName() string {
 	return "tbl_student"
 }
 
+type StudentScore struct {
+	ID uint64
+	Course string
+	StuNo string
+	Score uint
+}
+
+func (StudentScore) TableName() string {
+	return "tbl_student_score"
+}
 
 type Pet struct {
 	ID uint64
