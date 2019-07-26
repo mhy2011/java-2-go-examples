@@ -1,6 +1,9 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+	"net/http"
+)
 
 func main() {
 	r := gin.Default()
@@ -9,5 +12,15 @@ func main() {
 			"message": "Hello World",
 		})
 	})
+	r.GET("/json", json)
 	r.Run()	//默认监听8080端口
+}
+
+func json(c *gin.Context)  {
+	data := map[string]interface{}{
+		"lang": "go语言",
+		"tag":  "计算机",
+	}
+	c.AsciiJSON(http.StatusOK, data)
+
 }
