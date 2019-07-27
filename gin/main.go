@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
+	"java-2-go-examples/gin/controller"
 	"java-2-go-examples/gin/req"
 	"net/http"
 )
@@ -17,6 +18,7 @@ func main() {
 	r.GET("/json", json)
 	r.GET("/index", index)
 	r.POST("/login", login)
+	r.POST("/loginJson", controller.LoginJson)
 	r.Run()	//默认监听8080端口
 }
 
