@@ -15,7 +15,7 @@ func main() {
 
 	for i := 0; i < 10; i++ {
 		content := fmt.Sprintf("Hello_%d", i)
-		message := &sarama.ProducerMessage{Topic: "test01", Value: sarama.StringEncoder(content)}
+		message := &sarama.ProducerMessage{Topic: "test", Value: sarama.StringEncoder(content)}
 		producer.Input() <- message
 
 	}
