@@ -10,7 +10,7 @@ func main() {
 	strCh := make(chan string)
 	go producer(strCh)  //启动生产者
 	go consumer(strCh)  //启动消费者
-	time.Sleep(6 * 1e9) //休眠6s
+	time.Sleep(6 * time.Second) //休眠6s
 	fmt.Println("end main")
 }
 
